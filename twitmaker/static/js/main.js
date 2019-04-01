@@ -7,7 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
       this.action,
       formData,
     ).then(function(response) {
-      console.log(response);
+      console.log(response.data);
+      newLi = document.createElement('li');
+      newLi.classList = 'tweet';
+      tweetList = document.querySelector('.tweets');
+      newTime = document.createElement('time')
+      newTime.innerText = response.data.created_at
+      newP = document.createElement('p')
+      newP.innerText = response.data.message
+      newLi.appendChild(newTime);
+      newLi.appendChild(newP);
+      tweetList.prepend(newLi)
     }).catch(function(error) {
       console.log(error);
     });
